@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Rock Paper Scissors</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script> -->
+</head>
+
+<body>
+    <script>
+        var computerWins = 0;
+        var playerWins = 0;
+
+        function randomPlay() {
+            return Math.floor(Math.random() * (3 - 1 + 1)) + 1;
+        }
+        function computerPlay() {
+            //   randomly returns 'Rock' 'Paper' or 'Scissor'
+            if (randomPlay() === 1) {
+                return ('rock');
+            } else if (randomPlay() === 2) {
+                return ('paper');
+            } else {
+                return ('scissors');
+            }
+        }
+
+        function playRound(playerSelection, computerSelection) {
+            // switch case con tutti i possibili risultati
+            console.log('Player plays:' + playerSelection);
+            console.log('Computer plays: ' + computerSelection);
+            if (playerSelection === 'rock') {
+                switch (computerSelection) {
+                    case 'rock':
+                        console.log('Tie')
+                        break;
+                    case 'paper':
+                        console.log('you win')
+                        playerWins++;
+                        break;
+                    case 'scissors':
+                        console.log('you win')
+                        playerWins++;
+                        break;
+                }
+            }
+            else if (playerSelection === 'paper') {
+                switch (computerSelection) {
+                    case 'rock':
+                        console.log('lose')
+                        computerWins++;
+                        break;
+                    case 'paper':
+                        console.log('tie')
+                        break;
+                    case 'scissors':
+                        console.log('lose')
+                        computerWins++;
+                        break;
+                }
+            } else if (playerSelection === 'scissors') {
+                switch (computerSelection) {
+                    case 'rock':
+                        console.log('lose')
+                        computerWins++;
+                        break;
+                    case 'paper':
+                        console.log('you win')
+                        playerWins++;
+                        break;
+                    case 'scissors':
+                        console.log('tie')
+                        break;
+                }
+            }
+
+        }
+        // Write a NEW function called game().Use the previous function inside of this one to play a 5 round game that keeps score and reports a winner or loser at the end.
+        var i;
+        function game() {
+            for (i = 1; i <= 5; i++) {
+                // make your function case insensitive(so users can input rock, ROCK, RocK or any other variation)
+                let playerSelection = playerChoice = window.prompt("Enter your choice").toLowerCase();
+                let computerSelection = computerPlay();
+                playRound(playerSelection, computerSelection);
+                console.log('Player:' + playerWins + '\nComputer: ' + computerWins);
+
+            } playerWins > computerWins ? console.log("FINAL SCORE : Player wins.") : console.log("FINAL SCORE : Computer wins")
+        }
+        game()
+    </script>
+</body>
+
+</html>
